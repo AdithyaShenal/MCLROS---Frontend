@@ -1,3 +1,5 @@
+import ThemeController from "./ThemeController";
+
 const NavBar = () => {
   return (
     <>
@@ -24,7 +26,14 @@ const NavBar = () => {
             <path d="M14 10l2 2l-2 2"></path>
           </svg>
         </label>
-        <div className="px-4 font-bold">MCLROS</div>
+        <div className="px-4 font-bold">
+          Supply & Logistic Management System
+        </div>
+        <div className="ml-auto flex justify-center gap-5 mr-2">
+          <ThemeController />
+          <button>Profile</button>
+          <button>Logout</button>
+        </div>
       </nav>
     </>
   );
