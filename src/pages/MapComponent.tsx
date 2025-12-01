@@ -4,13 +4,11 @@ import L from "leaflet";
 import RoutingMachine from "../components/RoutingMachine";
 import type { Route } from "./RoutingPage";
 
-const MapComponent: React.FC<{ routes: Route[] }> = ({ routes }) => {
+const MapComponent: React.FC<{ route?: Route }> = ({ route }) => {
   // const [myPos, setMyPos] = useState<[number, number] | null>(null);
 
   const routeWaypoints = useMemo(() => {
-    if (!routes || routes.length === 0) return [];
-
-    const route = routes[0];
+    if (!route || !route.stops) return [];
 
     const depotLocation = route.stops[0].production
       ? route.stops[0].production.farmer.location
@@ -24,7 +22,7 @@ const MapComponent: React.FC<{ routes: Route[] }> = ({ routes }) => {
       const loc = stop.production.farmer.location;
       return L.latLng(loc.lat, loc.lon);
     });
-  }, [routes]);
+  }, [route]);
 
   const initialCenter: [number, number] =
     routeWaypoints.length > 0
@@ -33,8 +31,9 @@ const MapComponent: React.FC<{ routes: Route[] }> = ({ routes }) => {
 
   return (
     <>
-      <div className="h-full">
+      <div className="h-full w-full">
         <MapContainer
+          key={route?.vehicle_no}
           className="h-full rounded-lg border border-gray-300"
           center={initialCenter}
           zoom={15}

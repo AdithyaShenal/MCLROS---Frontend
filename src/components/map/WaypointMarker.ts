@@ -31,7 +31,7 @@ export const createNumberedMarkerIcon = (index: number) => {
             d="M12 2C6.477 2 2 6.477 2 12c0 8.74 10 20 10 20s10-11.26 10-20c0-5.523-4.477-10-10-10z" 
             fill="#fb2c36" 
             stroke="white" 
-            stroke-width="1" 
+            stroke-width="0" 
           />
           <circle 
             cx="12" 

@@ -5,21 +5,22 @@ import Footer from "./Footer";
 
 const Layout = () => {
   return (
-    <>
-      <div className="drawer lg:drawer-open">
-        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
-          <NavBar />
-          <div className="p-4 h-screen">
-            <Outlet />
-          </div>
-          <div>
-            <Footer />
-          </div>
+    <div className="drawer lg:drawer-open">
+      <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col min-h-screen">
+        {/* Navbar */}
+        <NavBar />
+
+        {/* Main Content */}
+        <div className="grow p-4">
+          <Outlet />
         </div>
-        <Sidebar />
+
+        {/* Footer */}
+        <Footer />
       </div>
-    </>
+      <Sidebar />
+    </div>
   );
 };
 

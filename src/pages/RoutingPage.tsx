@@ -2,6 +2,8 @@ import MapComponent from "./MapComponent";
 import RouteCard from "../components/map/RouteCard";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useState } from "react";
+// import MapboxMap from "../components/MapBox/MapboxMap";
 
 interface Farmer {
   _id: string;
@@ -39,6 +41,9 @@ export interface Route {
 }
 
 const RoutingPage = () => {
+  // const queryClient = useQueryClient();
+  const [mapRoute, setMapRoute] = useState<Route>();
+
   const {
     data: routes,
     isError,
@@ -53,7 +58,12 @@ const RoutingPage = () => {
         .then((res) => res.data),
     retry: 1,
     enabled: false,
+    // initialData: () => queryClient.getQueryCache(["routes"]),
   });
+
+  const onRouteCardClick = (props: Route) => {
+    setMapRoute(props);
+  };
 
   if (routes) console.log(routes);
 
@@ -91,22 +101,16 @@ const RoutingPage = () => {
           <button className="btn btn-neutral">Optimize Settings</button>
           <button className="btn btn-secondary">Approve & Dispatch</button>
         </div>
-        <div className="h-screen md:h-130 grid grid-rows-[6fr_4fr] grid-cols-1 gap-2 md:grid-rows-1 md:grid-cols-[7fr_3fr]">
-          <div>
-            <MapComponent routes={routes || []} />
+        <div className="grid grid-rows-[2fr_3fr] md:grid-rows-1 grid-cols-1 md:grid-cols-[3fr_2fr] gap-2 h-[600px] md:h-[600px]">
+          <div className="w-full h-full">
+            <MapComponent route={mapRoute} />
           </div>
-          <div className="md:h-130 overflow-y-scroll rounded-lg border border-gray-300">
-            <ul>
+          <div className="overflow-y-scroll rounded-lg border border-gray-300">
+            <ul className="p-2">
               {routes &&
                 routes.map((route) => (
                   <li key={route.vehicle_no}>
-                    <RouteCard
-                      stops={route.stops}
-                      vehicleNo={route.vehicle_no}
-                      noOfStops={route.stops.length}
-                      distance={route.distance}
-                      load={route.load}
-                    />
+                    <RouteCard props={route} onClickRoute={onRouteCardClick} />
                   </li>
                 ))}
             </ul>

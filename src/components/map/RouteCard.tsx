@@ -1,13 +1,11 @@
+import type { Route } from "../../pages/RoutingPage";
+
 interface Props {
-  vehicleNo: string;
-  noOfStops: number;
-  distance: number;
-  time?: string;
-  load: number;
-  stops: object;
+  props: Route;
+  onClickRoute: (props: Route) => void;
 }
 
-const RouteCard = ({ vehicleNo, noOfStops, distance, load }: Props) => {
+const RouteCard = ({ props, onClickRoute }: Props) => {
   return (
     <>
       <div
@@ -23,19 +21,20 @@ const RouteCard = ({ vehicleNo, noOfStops, distance, load }: Props) => {
             transition-all
             hover:border-black
             "
+        onClick={() => onClickRoute(props)}
       >
         <div className="flex justify-between text-sm">
-          <div className="text-lg font-extrabold">{vehicleNo}</div>
+          <div className="text-lg font-extrabold">{props.vehicle_no}</div>
         </div>
 
         <div className="flex justify-between text-gray-500 text-sm">
           <div className="">Stops</div>
-          <div className="font-bold">{noOfStops - 2}</div>
+          <div className="font-bold">{props.stops.length - 2}</div>
         </div>
 
         <div className="flex justify-between text-gray-500 text-sm">
           <div className="">Distance</div>
-          <div className="font-bold">{distance / 1000}Km</div>
+          <div className="font-bold">{props.distance / 1000}Km</div>
         </div>
 
         <div className="flex justify-between text-gray-500 text-sm">
@@ -45,7 +44,7 @@ const RouteCard = ({ vehicleNo, noOfStops, distance, load }: Props) => {
 
         <div className="flex justify-between text-gray-500 text-sm">
           <div className="">Load</div>
-          <div className="font-bold">{load} Liters</div>
+          <div className="font-bold">{props.load} Liters</div>
         </div>
       </div>
     </>

@@ -66,8 +66,16 @@ const createRoutineMachineLayer = (props: RoutingMachineProps) => {
     },
 
     router: L.Routing.mapbox(MAPBOX_TOKEN, {
-      profile: "mapbox/driving", // must include "mapbox/"
+      profile: "mapbox/driving",
       alternatives: true,
+      steps: true,
+      geometries: "geojson",
+      overview: "full",
+      annotations: ["duration", "distance"],
+      voiceInstructions: false,
+      bannerInstructions: false,
+      allowUTurn: true, // <--- enable U-turns
+      roundabout_exits: true,
     }),
   });
 
