@@ -4,7 +4,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
+  /* themes: light --default, dark --prefersdark, business ; */
+  themes: corporate --default, business --prefersdark;
 }
 
 /* custom style (ignore the error on theme) */
@@ -70,10 +71,10 @@
   }
 }
 
-/* .no-scrollbar::-webkit-scrollbar {
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
-} */
+}
