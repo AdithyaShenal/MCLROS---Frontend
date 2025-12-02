@@ -1,7 +1,7 @@
 const RouteControlPage = () => {
   return (
     <>
-      <p></p>
+      <p>Route Control</p>
     </>
   );
 };

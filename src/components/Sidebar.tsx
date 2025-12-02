@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { FiHome } from "react-icons/fi";
 import { LuMilk } from "react-icons/lu";
-import { TbRouteAltLeft } from "react-icons/tb";
 import { RiSettings3Line } from "react-icons/ri";
 import { GrUserWorker } from "react-icons/gr";
 import { PiTruckBold } from "react-icons/pi";
+import { MdOutlineManageHistory } from "react-icons/md";
+import { GrMapLocation } from "react-icons/gr";
 
 const Sidebar = () => {
   return (
@@ -26,7 +27,10 @@ const Sidebar = () => {
                 data-tip="Homepage"
               >
                 {/* Home icon */}
-                <FiHome className="my-1.5 inline-block size-4" />
+                <FiHome
+                  className="my-1.5 inline-block size-4"
+                  strokeWidth={2}
+                />
                 <span className="is-drawer-close:hidden">Home</span>
               </NavLink>
             </li>
@@ -65,7 +69,10 @@ const Sidebar = () => {
                 data-tip="Production"
               >
                 {/* Settings icon */}
-                <LuMilk className="my-1.5 inline-block size-4" />
+                <LuMilk
+                  className="my-1.5 inline-block size-4.5"
+                  strokeWidth={2}
+                />
                 <span className="is-drawer-close:hidden">Production</span>
               </NavLink>
             </li>
@@ -78,7 +85,7 @@ const Sidebar = () => {
                 data-tip="Routing"
               >
                 {/* Settings icon */}
-                <TbRouteAltLeft className="my-1.5 inline-block size-4" />
+                <GrMapLocation className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Routing</span>
               </NavLink>
             </li>
@@ -86,12 +93,25 @@ const Sidebar = () => {
             {/* List item */}
             <li>
               <NavLink
-                to="/configurations"
+                to="/route_control"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Routing"
+              >
+                {/* Settings icon */}
+                <MdOutlineManageHistory className="my-1.5 inline-block size-4.5" />
+                <span className="is-drawer-close:hidden">Route Config</span>
+              </NavLink>
+            </li>
+
+            {/* List item */}
+            <li>
+              <NavLink
+                to="/config"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Settings"
               >
                 {/* Settings icon */}
-                <RiSettings3Line className="my-1.5 inline-block size-4" />
+                <RiSettings3Line className="my-1.5 inline-block size-4.5" />
                 <span className="is-drawer-close:hidden">Configurations</span>
               </NavLink>
             </li>

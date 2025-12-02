@@ -1,7 +1,7 @@
 const FarmerPage = () => {
   return (
     <>
-      <p></p>
+      <p>Farmer Page</p>
     </>
   );
 };

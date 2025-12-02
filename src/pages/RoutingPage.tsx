@@ -43,6 +43,7 @@ export interface Route {
 const RoutingPage = () => {
   // const queryClient = useQueryClient();
   const [mapRoute, setMapRoute] = useState<Route>();
+  const [routeWiseResolve, setRouteWiseResolve] = useState<boolean>(false);
 
   const {
     data: routes,
@@ -65,11 +66,91 @@ const RoutingPage = () => {
     setMapRoute(props);
   };
 
-  if (routes) console.log(routes);
+  if (routes) console.log(routes); // Debug
 
   return (
     <>
       <div className="flex flex-col gap-2">
+        {/*  */}
+
+        <div className="stats border border-gray-300 mt-2 rounded-lg">
+          <div className="stat place-items-center">
+            <div className="stat-title">Total liters</div>
+            <div className="stat-value">31L</div>
+            <div className="stat-desc">From available production</div>
+          </div>
+
+          <div className="stat place-items-center">
+            <div className="stat-title">Available capacity</div>
+            <div className="stat-value ">450L</div>
+            <div className="stat-desc text-secondary">
+              Available trucks capacity
+            </div>
+          </div>
+
+          <div className="stat place-items-center">
+            <div className="stat-title">Auto resolvability</div>
+            <div className="badge badge-success">Can be auto resolve</div>
+            {/* <div className="badge badge-error text-white">Cannot Resovle</div> */}
+            <div className="stat-desc text-secondary">
+              Please handle manually
+            </div>
+          </div>
+
+          <div className="stat place-items-center">
+            <div className="stat-title">Route wise resolvability</div>
+            {/* <div className="badge badge-success">Can be resolve</div> */}
+            <div className="badge badge-error text-white">
+              Cannot be resovle
+            </div>
+            <div className="stat-desc">Please handle manually</div>
+          </div>
+        </div>
+        {/*  */}
+
+        <div className="flex items-center gap-2 h-auto">
+          <button
+            className="btn btn-neutral"
+            onClick={() => {
+              refetch();
+            }}
+          >
+            {isLoading && <span className="loading loading-spinner"></span>}
+            Generate Optimized Routes
+          </button>
+          <select
+            defaultValue="Server location"
+            className="select select-neutral max-w-36"
+          >
+            <option disabled={true}>Optimize Strategy</option>
+            <option onClick={() => setRouteWiseResolve(false)}>
+              Auto resolve
+            </option>
+            <option onClick={() => setRouteWiseResolve(true)}>
+              Route wise
+            </option>
+          </select>
+
+          {routeWiseResolve && (
+            <select
+              defaultValue="Server location"
+              className="select select-neutral max-w-36"
+            >
+              <option disabled={true}>Optimize Strategy</option>
+              <option>All</option>
+              <option>Route 1</option>
+              <option>Route 2</option>
+              <option>Route 3</option>
+              <option>Route 4</option>
+              <option>Route 5</option>
+              <option>Route 6</option>
+            </select>
+          )}
+
+          <button className="btn btn-secondary">Approve & Dispatch</button>
+        </div>
+
+        {/* Error Message */}
         {isError && (
           <div role="alert" className="alert alert-error">
             <svg
@@ -88,19 +169,9 @@ const RoutingPage = () => {
             <span>{error.message} check your internet connection</span>
           </div>
         )}
-        <div className="flex items-center gap-2 my-4 h-auto">
-          <button
-            className="btn btn-neutral"
-            onClick={() => {
-              refetch();
-            }}
-          >
-            {isLoading && <span className="loading loading-spinner"></span>}
-            Generate Optimized Routes
-          </button>
-          <button className="btn btn-neutral">Optimize Settings</button>
-          <button className="btn btn-secondary">Approve & Dispatch</button>
-        </div>
+
+        {/* Error Message */}
+
         <div className="grid grid-rows-[2fr_3fr] md:grid-rows-1 grid-cols-1 md:grid-cols-[3fr_2fr] gap-2 h-[600px] md:h-[600px]">
           <div className="w-full h-full">
             <MapComponent route={mapRoute} />
