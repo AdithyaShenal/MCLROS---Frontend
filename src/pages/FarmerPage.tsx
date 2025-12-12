@@ -1,6 +1,8 @@
 import { useState } from "react";
 import FarmerTable from "../components/farmers/FarmerTable";
 import AddFarmerModal from "../components/farmers/AddFarmerModal";
+import EditFarmerModal from "../components/farmers/EditFarmerModal";
+import DeleteFarmerModal from "../components/farmers/DeleteFarmerModal";
 
 export type Farmer = {
   id: number;
@@ -38,9 +40,22 @@ export default function FarmerPage() {
   const [farmType, setFarmType] = useState("");
   const [farmers, setFarmers] = useState<Farmer[]>(initialFarmers);
   const [showModal, setShowModal] = useState(false);
+  const [editingFarmer, setEditingFarmer] = useState<Farmer | null>(null);
+  const [deletingFarmer, setDeletingFarmer] = useState<Farmer | null>(null);
 
   const handleAddFarmer = (data: Omit<Farmer, "id">) => {
     setFarmers((prev) => [...prev, { id: prev.length + 1, ...data }]);
+  };
+
+  const handleUpdateFarmer = (updated: Farmer) => {
+    setFarmers((prev) => prev.map((f) => (f.id === updated.id ? updated : f)));
+    setEditingFarmer(null);
+  };
+
+  const handleDeleteFarmer = () => {
+    if (!deletingFarmer) return;
+    setFarmers((prev) => prev.filter((f) => f.id !== deletingFarmer.id));
+    setDeletingFarmer(null);
   };
 
   return (
