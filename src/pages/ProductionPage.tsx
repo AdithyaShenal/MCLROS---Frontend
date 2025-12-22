@@ -7,7 +7,7 @@ const ProductionPage = () => {
 
   return (
     <div className="p-7 w-full">
-      <h1 className="text-2xl font-semibold">Production Overview</h1>
+      -<h1 className="text-2xl font-semibold">Production Overview</h1>
       <p className="text-gray-500 text-sm mb-6">
         Manage Pending collection requests
       </p>
@@ -17,8 +17,9 @@ const ProductionPage = () => {
           <div className="relative w-full max-w-xl">
             <Search
               size={16}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 z-10 pointer-events-none"
             />
+
             <input
               type="text"
               placeholder="Search by farmer name..."
