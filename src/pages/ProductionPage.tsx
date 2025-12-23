@@ -1,9 +1,33 @@
 import { useState } from "react";
 import { Search } from "lucide-react";
+import ProductionTable, {
+  ProductionRequest,
+} from "../components/production/ProductionTable";
+
+const initialRequests: ProductionRequest[] = [
+  {
+    id: "F001",
+    farmerName: "Sunil Perera",
+    volume: 125,
+    timeWindow: "06:00 - 08:00",
+    registeredAt: "2024-01-15 05:45",
+    status: "Active",
+  },
+  {
+    id: "F002",
+    farmerName: "Kamala Silva",
+    volume: 98,
+    timeWindow: "07:00 - 09:00",
+    registeredAt: "2024-01-15 06:12",
+    status: "Active",
+  },
+];
 const ProductionPage = () => {
   const [search, setSearch] = useState("");
   const [farmerId, setFarmerId] = useState("");
   const [date, setDate] = useState("");
+  const [requests, setRequests] =
+    useState<ProductionRequest[]>(initialRequests);
 
   return (
     <div className="p-7 w-full">
@@ -42,6 +66,11 @@ const ProductionPage = () => {
             onChange={(e) => setDate(e.target.value)}
           />
         </div>
+        <ProductionTable
+          requests={requests}
+          onMap={(r) => console.log("Map clicked", r)}
+          onBlock={(r) => console.log("Block clicked", r)}
+        />
       </div>
     </div>
   );
