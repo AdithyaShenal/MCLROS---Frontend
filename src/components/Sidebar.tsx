@@ -6,6 +6,7 @@ import { GrUserWorker } from "react-icons/gr";
 import { PiTruckBold } from "react-icons/pi";
 import { MdOutlineManageHistory } from "react-icons/md";
 import { GrMapLocation } from "react-icons/gr";
+import { TbEaseInOutControlPoints } from "react-icons/tb";
 
 const Sidebar = () => {
   return (
@@ -86,7 +87,7 @@ const Sidebar = () => {
               >
                 {/* Settings icon */}
                 <GrMapLocation className="my-1.5 inline-block size-4" />
-                <span className="is-drawer-close:hidden">Routing</span>
+                <span className="is-drawer-close:hidden">Route Optimize</span>
               </NavLink>
             </li>
 
@@ -98,8 +99,21 @@ const Sidebar = () => {
                 data-tip="Routing"
               >
                 {/* Settings icon */}
+                <TbEaseInOutControlPoints className="my-1.5 inline-block size-4.5" />
+                <span className="is-drawer-close:hidden">Route Control</span>
+              </NavLink>
+            </li>
+
+            {/* List item */}
+            <li>
+              <NavLink
+                to="/route_history"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Routing"
+              >
+                {/* Settings icon */}
                 <MdOutlineManageHistory className="my-1.5 inline-block size-4.5" />
-                <span className="is-drawer-close:hidden">Route Config</span>
+                <span className="is-drawer-close:hidden">Route History</span>
               </NavLink>
             </li>
 

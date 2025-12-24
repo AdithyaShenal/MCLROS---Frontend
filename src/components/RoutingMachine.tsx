@@ -8,9 +8,6 @@ interface RoutingMachineProps extends ControlOptions {
   waypoints: LatLng[];
 }
 
-const MAPBOX_TOKEN =
-  "pk.eyJ1IjoiYWRpdGh5YXNoZW5hbCIsImEiOiJjbWlrbHRtY3QxOTJ6M2VxeGE3cmkzZzJ2In0.G6srdBSi0ewZCX79ojBoeQ";
-
 const createRoutineMachineLayer = (props: RoutingMachineProps) => {
   const { waypoints } = props;
 
@@ -18,14 +15,15 @@ const createRoutineMachineLayer = (props: RoutingMachineProps) => {
     waypoints: waypoints,
     lineOptions: {
       styles: [
-        { color: "white", weight: 10, opacity: 1 },
-        { color: "#1A73E8", weight: 6, opacity: 1 },
+        { color: "white", weight: 3, opacity: 1 },
+        { color: "#1A73E8", weight: 2, opacity: 1 },
       ],
       smoothFactor: 5,
     },
+
     altLineOptions: {
       styles: [
-        { color: "#1A73E8", weight: 4, opacity: 0.6, dashArray: "10,10" },
+        { color: "#1A73E8", weight: 3, opacity: 0.8, dashArray: "10,10" },
       ],
     },
     show: false,
@@ -65,18 +63,30 @@ const createRoutineMachineLayer = (props: RoutingMachineProps) => {
       });
     },
 
-    router: L.Routing.mapbox(MAPBOX_TOKEN, {
-      profile: "mapbox/driving",
-      alternatives: true,
-      steps: true,
-      geometries: "geojson",
-      overview: "full",
-      annotations: ["duration", "distance"],
-      voiceInstructions: false,
-      bannerInstructions: false,
-      allowUTurn: true, // <--- enable U-turns
-      roundabout_exits: true,
+    router: L.Routing.osrmv1({
+      serviceUrl: "https://router.project-osrm.org/route/v1",
+      profile: "car", // realistic vehicle profile
+      geometryPrecision: 8, // precise enough
+      overview: "full", // full path geometry
+      // steps: true, // turn-by-turn instructions
+      annotations: ["duration", "distance", "nodes"], // optional, more info
+      alternatives: true, // true if you want multiple route options
+      continueStraight: true, // avoid weird zigzags
     }),
+
+    // router: L.Routing.mapbox(MAPBOX_TOKEN, {
+    //   profile: "mapbox/driving-traffic",
+    //   alternatives: true,
+    //   steps: true,
+    //   geometries: "polyline6",
+    //   overview: "full",
+    //   annotations: ["duration", "distance"],
+    //   voiceInstructions: false,
+    //   bannerInstructions: false,
+    //   // allowUTurn: true,
+    //   // roundabout_exits: true,
+    //   continue_straight: true,
+    // }),
   });
 
   return instance;

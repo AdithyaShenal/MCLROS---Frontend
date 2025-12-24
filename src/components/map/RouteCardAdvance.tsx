@@ -3,9 +3,10 @@ import type { Route } from "../../pages/RoutingPage";
 interface Props {
   props: Route;
   onClickRoute: (props: Route) => void;
+  onClickDelete: (Props: Route) => void;
 }
 
-const RouteCard = ({ props, onClickRoute }: Props) => {
+const RouteCard = ({ props, onClickRoute, onClickDelete }: Props) => {
   return (
     <div
       className="
@@ -49,6 +50,13 @@ const RouteCard = ({ props, onClickRoute }: Props) => {
         >
           View
         </button>
+
+        <button
+          onClick={() => onClickDelete(props)}
+          className="btn btn-error btn-sm text-white"
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
@@ -63,7 +71,7 @@ const InfoRow = ({
 }) => (
   <div className="flex justify-between text-gray-500">
     <span>{label}</span>
-    <span className="font-semibold text-gray-800">{value}</span>
+    <span className="font-medium text-gray-800">{value}</span>
   </div>
 );
 

@@ -1,12 +1,14 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import L from "leaflet";
 import RoutingMachine from "../components/RoutingMachine";
 import type { Route } from "./RoutingPage";
 
-const MapComponent: React.FC<{ route?: Route }> = ({ route }) => {
-  // const [myPos, setMyPos] = useState<[number, number] | null>(null);
+interface Props {
+  route?: Route;
+}
 
+const MapComponent = ({ route }: Props) => {
   const routeWaypoints = useMemo(() => {
     if (!route || !route.stops) return [];
 
@@ -31,16 +33,15 @@ const MapComponent: React.FC<{ route?: Route }> = ({ route }) => {
 
   return (
     <>
-      <div className="h-full w-full">
+      <div className="h-full w-full ">
         <MapContainer
-          key={route?.vehicle_no}
+          key={JSON.stringify(routeWaypoints)}
           className="h-full rounded-lg border border-gray-300"
           center={initialCenter}
-          zoom={15}
+          zoom={10}
           scrollWheelZoom={true}
         >
           <TileLayer
-            className="leaflet-control-container leaflet-control-attribution"
             attribution="© Mapbox"
             url={
               "https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWRpdGh5YXNoZW5hbCIsImEiOiJjbWlrazQ0aTQwZDdtM2VzZGJrcXA0d3ZnIn0.lI5omaXW6lzbln2Vpb3ubA"
@@ -49,15 +50,8 @@ const MapComponent: React.FC<{ route?: Route }> = ({ route }) => {
 
           <RoutingMachine
             waypoints={routeWaypoints}
-            // Add a key to force re-render if waypoints change dynamically
-            key={routeWaypoints.length}
+            key={JSON.stringify(routeWaypoints)}
           />
-
-          {/* <MyLocationTracker position={myPos} setPosition={setMyPos} /> */}
-
-          {/* <Marker position={initialCenter} icon={customMarker}>
-            <Popup>Start of the 50-waypoint route.</Popup>
-          </Marker> */}
         </MapContainer>
       </div>
     </>

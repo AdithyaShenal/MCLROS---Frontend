@@ -7,6 +7,7 @@ import FarmerPage from "../pages/FarmerPage";
 import ConfigPage from "../pages/ConfigPage";
 import RouteControlPage from "../pages/RouteControlPage";
 import HomePage from "../pages/HomePage";
+import RouteHistoryPage from "../pages/RouteHistoryPage";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: "farmer", element: <FarmerPage /> },
       { path: "config", element: <ConfigPage /> },
       { path: "route_control", element: <RouteControlPage /> },
+      { path: "route_history", element: <RouteHistoryPage /> },
     ],
   },
 ]);
