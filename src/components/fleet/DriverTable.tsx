@@ -49,13 +49,25 @@ export default function DriverTable({
               </td>
               <td>
                 <td>
-                  {d.availability === "On Route" ? (
-                    <span className="badge badge-info">On Route</span>
-                  ) : (
-                    <button className="btn btn-sm btn-outline">
-                      {d.availability}
-                    </button>
-                  )}
+                  <td className="text-center">
+                    {d.availability === "Set Inactive" && (
+                      <button className="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white border-none">
+                        Set Inactive
+                      </button>
+                    )}
+
+                    {d.availability === "On Route" && (
+                      <button className="btn btn-sm bg-blue-400 hover:bg-blue-500 text-white border-none">
+                        On Route
+                      </button>
+                    )}
+
+                    {d.availability === "Set Active" && (
+                      <button className="btn btn-sm btn-outline">
+                        Set Active
+                      </button>
+                    )}
+                  </td>
                 </td>
               </td>
               <td className="text-right pr-6">
