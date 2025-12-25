@@ -1,11 +1,39 @@
 import { useState } from "react";
 import { Search } from "lucide-react";
+import DriverTable, { type Driver } from "../components/fleet/DriverTable";
+const initialDrivers: Driver[] = [
+  {
+    id: "D001",
+    name: "Lakshan Perera",
+    username: "lperera",
+    truck: "WP CAB-1234",
+    status: "Active",
+    availability: "Set Inactive",
+  },
+  {
+    id: "D002",
+    name: "Dinesh Silva",
+    username: "dsilva",
+    truck: "WP CAC-5678",
+    status: "Active",
+    availability: "On Route",
+  },
+  {
+    id: "D003",
+    name: "Rohan Fernando",
+    username: "rfernando",
+    truck: "WP CAD-9012",
+    status: "Inactive",
+    availability: "Set Active",
+  },
+];
 
 const FleetPage = () => {
   const [activeTab, setActiveTab] = useState<"Trucks" | "Drivers">("Drivers");
   const [search, setSearch] = useState("");
   const [truck, setTruck] = useState("");
   const [status, setStatus] = useState("");
+  const [drivers] = useState<Driver[]>(initialDrivers);
 
   return (
     <div className="p-7 w-full">
@@ -66,7 +94,11 @@ const FleetPage = () => {
         </div>
 
         <div className="text-gray-400 text-sm">
-          Table will be added in Step 2...
+          <DriverTable
+            drivers={drivers}
+            onEdit={(d) => console.log("Edit", d)}
+            onDelete={(d) => console.log("Delete", d)}
+          />
         </div>
       </div>
     </div>
