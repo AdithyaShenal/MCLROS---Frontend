@@ -3,7 +3,7 @@ import type { Route } from "../../pages/RoutingPage";
 interface Props {
   props: Route;
   onClickRoute: (props: Route) => void;
-  onClickDelete: (Props: Route) => void;
+  onClickDelete: (props: Route) => void;
 }
 
 const RouteCard = ({ props, onClickRoute, onClickDelete }: Props) => {
@@ -11,28 +11,36 @@ const RouteCard = ({ props, onClickRoute, onClickDelete }: Props) => {
     <div
       className="
         mx-2 my-3
-        rounded-xl
+        rounded-sm
         border border-gray-200
         bg-white
         p-4
-        transition-colors duration-200
-        hover:border-blue-400
-        hover:bg-blue-50/20
+        transition-all
+        hover:border-gray-400
       "
     >
       {/* Header */}
-      <div className="flex items-center justify-between mb-3">
-        <h3 className="text-lg font-semibold text-gray-900">
-          {props.license_no}
-        </h3>
+      <div className="flex items-start justify-between mb-3">
+        <div>
+          {/* License number (Primary) */}
+          <h3 className="text-lg font-semibold text-gray-900">
+            {props.license_no}
+          </h3>
 
+          {/* Truck model + Route number (Secondary, faded) */}
+          <div className="text-xs text-gray-500 mt-0.5">
+            {props.model} · Route {props.route}
+          </div>
+        </div>
+
+        {/* Status */}
         <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-md">
           {props.status}
         </span>
       </div>
 
       {/* Divider */}
-      <div className="h-px bg-gray-100 mb-3" />
+      <div className="h-px bg-gray-200/80 mb-3" />
 
       {/* Details */}
       <div className="space-y-2 text-sm">

@@ -3,6 +3,7 @@ import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-routing-machine";
 import { createNumberedMarkerIcon } from "./map/WaypointMarker";
 import { depotMarker } from "./map/DeportMarker";
+import "leaflet-polylineoffset";
 
 interface RoutingMachineProps extends ControlOptions {
   waypoints: LatLng[];
@@ -15,16 +16,14 @@ const createRoutineMachineLayer = (props: RoutingMachineProps) => {
     waypoints: waypoints,
     lineOptions: {
       styles: [
-        { color: "white", weight: 3, opacity: 1 },
-        { color: "#1A73E8", weight: 2, opacity: 1 },
+        { color: "white", weight: 6, opacity: 1 },
+        { color: "#1A73E8", weight: 4, opacity: 1 },
       ],
       smoothFactor: 5,
     },
 
     altLineOptions: {
-      styles: [
-        { color: "#1A73E8", weight: 3, opacity: 0.8, dashArray: "10,10" },
-      ],
+      styles: [{ color: "#1A73E8", weight: 3, opacity: 0.8 }],
     },
     show: false,
     addWaypoints: false,

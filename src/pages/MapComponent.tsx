@@ -36,7 +36,7 @@ const MapComponent = ({ route }: Props) => {
       <div className="h-full w-full ">
         <MapContainer
           key={JSON.stringify(routeWaypoints)}
-          className="h-full rounded-lg border border-gray-300"
+          className="h-full rounded-xs border border-gray-300"
           center={initialCenter}
           zoom={10}
           scrollWheelZoom={true}

@@ -1,12 +1,17 @@
 import { NavLink } from "react-router-dom";
-import { FiHome } from "react-icons/fi";
-import { LuMilk } from "react-icons/lu";
 import { RiSettings3Line } from "react-icons/ri";
-import { GrUserWorker } from "react-icons/gr";
-import { PiTruckBold } from "react-icons/pi";
 import { MdOutlineManageHistory } from "react-icons/md";
-import { GrMapLocation } from "react-icons/gr";
-import { TbEaseInOutControlPoints } from "react-icons/tb";
+
+import {
+  House,
+  Waypoints,
+  Users,
+  Truck,
+  Milk,
+  Route,
+  History,
+  FileSliders,
+} from "lucide-react";
 
 const Sidebar = () => {
   return (
@@ -25,13 +30,9 @@ const Sidebar = () => {
               <NavLink
                 to="."
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Homepage"
               >
                 {/* Home icon */}
-                <FiHome
-                  className="my-1.5 inline-block size-4"
-                  strokeWidth={2}
-                />
+                <House className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Home</span>
               </NavLink>
             </li>
@@ -41,10 +42,9 @@ const Sidebar = () => {
               <NavLink
                 to="/farmer"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Farmers"
               >
                 {/* Settings icon */}
-                <GrUserWorker className="my-1.5 inline-block size-4" />
+                <Users className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Farmers</span>
               </NavLink>
             </li>
@@ -54,10 +54,9 @@ const Sidebar = () => {
               <NavLink
                 to="/fleet"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Fleet"
               >
                 {/* Settings icon */}
-                <PiTruckBold className="my-1.5 inline-block size-4" />
+                <Truck className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Fleet</span>
               </NavLink>
             </li>
@@ -67,13 +66,9 @@ const Sidebar = () => {
               <NavLink
                 to="/production"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Production"
               >
                 {/* Settings icon */}
-                <LuMilk
-                  className="my-1.5 inline-block size-4.5"
-                  strokeWidth={2}
-                />
+                <Milk className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Production</span>
               </NavLink>
             </li>
@@ -83,10 +78,9 @@ const Sidebar = () => {
               <NavLink
                 to="/routing"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Routing"
               >
                 {/* Settings icon */}
-                <GrMapLocation className="my-1.5 inline-block size-4" />
+                <Waypoints className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Route Optimize</span>
               </NavLink>
             </li>
@@ -96,10 +90,9 @@ const Sidebar = () => {
               <NavLink
                 to="/route_control"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Routing"
               >
                 {/* Settings icon */}
-                <TbEaseInOutControlPoints className="my-1.5 inline-block size-4.5" />
+                <Route className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Route Control</span>
               </NavLink>
             </li>
@@ -109,10 +102,9 @@ const Sidebar = () => {
               <NavLink
                 to="/route_history"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Routing"
               >
                 {/* Settings icon */}
-                <MdOutlineManageHistory className="my-1.5 inline-block size-4.5" />
+                <History className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Route History</span>
               </NavLink>
             </li>
@@ -122,10 +114,9 @@ const Sidebar = () => {
               <NavLink
                 to="/config"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Settings"
               >
                 {/* Settings icon */}
-                <RiSettings3Line className="my-1.5 inline-block size-4.5" />
+                <FileSliders className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Configurations</span>
               </NavLink>
             </li>
