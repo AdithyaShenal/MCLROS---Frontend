@@ -2,6 +2,9 @@ import StatCard from "../components/home/StatCard";
 import LitersLineChart from "../components/home/LitersLineChart";
 import DistanceBarChart from "../components/home/DistanceBarChart";
 import ProductionDoughnutChart from "../components/home/ProductionDoughnutChart";
+import ProductionsLineChart from "../components/home/ProductionsLineChart";
+import AvgLitersFarmerBarChart from "../components/home/AvgLitersFarmerBarChart";
+import VehicleUtilizationChart from "../components/home/VehicleUtilizationChart";
 
 import { Droplets, Calendar, Truck, AlertCircle } from "lucide-react";
 const dashboardStats = {
@@ -79,7 +82,9 @@ const HomePage = () => {
               Total productions per day
             </h2>
 
-            <div className="h-52">{/* Chart component */}</div>
+            <div className="h-52">
+              <ProductionsLineChart />
+            </div>
           </div>
         </div>
 
@@ -89,7 +94,10 @@ const HomePage = () => {
               Average liters per farmer
             </h2>
 
-            <div className="h-52">{/* Chart component */}</div>
+            <div className="h-52">
+              {" "}
+              <AvgLitersFarmerBarChart />
+            </div>
           </div>
         </div>
 
@@ -99,7 +107,10 @@ const HomePage = () => {
               Vehicle utilization
             </h2>
 
-            <div className="h-52">{/* Chart component */}</div>
+            <div className="h-52">
+              {" "}
+              <VehicleUtilizationChart />
+            </div>
           </div>
         </div>
       </div>
