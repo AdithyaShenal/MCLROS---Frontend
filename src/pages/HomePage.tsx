@@ -1,6 +1,7 @@
 import StatCard from "../components/home/StatCard";
 import LitersLineChart from "../components/home/LitersLineChart";
 import DistanceBarChart from "../components/home/DistanceBarChart";
+import ProductionDoughnutChart from "../components/home/ProductionDoughnutChart";
 
 import { Droplets, Calendar, Truck, AlertCircle } from "lucide-react";
 const dashboardStats = {
@@ -67,6 +68,39 @@ const HomePage = () => {
         {/* Chart 3 */}
         <div className="bg-white rounded-xl border p-5">
           <h2 className="text-base font-semibold mb-4">Production status</h2>
+          <ProductionDoughnutChart />
+        </div>
+      </div>
+      {/* 3rd ROW CHARTS */}
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="card bg-base-100 shadow-sm">
+          <div className="card-body p-4">
+            <h2 className="text-sm font-semibold text-gray-700 mb-2">
+              Total productions per day
+            </h2>
+
+            <div className="h-52">{/* Chart component */}</div>
+          </div>
+        </div>
+
+        <div className="card bg-base-100 shadow-sm">
+          <div className="card-body p-4">
+            <h2 className="text-sm font-semibold text-gray-700 mb-2">
+              Average liters per farmer
+            </h2>
+
+            <div className="h-52">{/* Chart component */}</div>
+          </div>
+        </div>
+
+        <div className="card bg-base-100 shadow-sm">
+          <div className="card-body p-4">
+            <h2 className="text-sm font-semibold text-gray-700 mb-2">
+              Vehicle utilization
+            </h2>
+
+            <div className="h-52">{/* Chart component */}</div>
+          </div>
         </div>
       </div>
     </div>
